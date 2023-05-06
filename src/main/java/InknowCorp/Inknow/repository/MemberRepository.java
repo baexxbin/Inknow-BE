@@ -30,9 +30,9 @@ public class MemberRepository {
     }
 
     // 비공개 이름으로 회원 목록 검색
-    public List<Member> findByName(String name) {
-        return em.createQuery("select m from Member m where m.hiddenName =:name", Member.class)
-                .setParameter("name", name)
+    public List<Member> findByHiddenName(String hiddenName) {
+        return em.createQuery("select m from Member m where m.hiddenName =:hidden_name", Member.class)
+                .setParameter("hidden_name", hiddenName)
                 .getResultList();
     }
 }
