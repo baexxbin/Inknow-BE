@@ -20,8 +20,11 @@ public class Member {
     @Embedded
     private Information information;
 
-    @OneToMany(mappedBy = "member")
-    private List<Question> questions = new ArrayList<>();
+//    @OneToMany(mappedBy = "member")
+//    private List<Question> questions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberQuestion> memberQuestions = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
     private List<Diary> scraps;
