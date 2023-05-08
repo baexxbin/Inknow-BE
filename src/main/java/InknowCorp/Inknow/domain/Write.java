@@ -13,8 +13,9 @@ public class Write {
     @Column(name = "write_id")
     private Long id;
 
-    @OneToOne(mappedBy = "write", fetch = FetchType.LAZY)
-    private Question question;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "diary_id")

@@ -14,10 +14,6 @@ public class Diary {
     @OneToOne(mappedBy = "diary", fetch = FetchType.LAZY)
     private Write write;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
-
     private String Content;
     private int heart;
     private int report;
