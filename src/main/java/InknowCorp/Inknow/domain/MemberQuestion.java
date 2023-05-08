@@ -1,11 +1,13 @@
 package InknowCorp.Inknow.domain;
 
+import lombok.Getter;
 import lombok.Lombok;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 public class MemberQuestion {
 
     @Id @GeneratedValue
