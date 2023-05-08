@@ -27,9 +27,4 @@ public class Question {
 
     private String topic;
 
-    @Enumerated(EnumType.STRING)
-    private RespondStatus respondStatus;    // 응답상태 [RESPONDED, UNRESPONDED, RESPONSE_EXPIRED]
-
-    private LocalDateTime expiration;
-
 }
