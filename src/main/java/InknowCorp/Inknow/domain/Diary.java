@@ -21,4 +21,19 @@ public class Diary {
     private String Content;
     private int heart;
     private int report;
+
+    /*
+        비즈니스 로직
+     */
+
+    // 좋아요 수 증가
+    public void increaseHeart(int heart) {
+        this.heart += heart;
+    }
+
+    // 신고 수 누적
+    public void increaseReport(int report) {
+        this.report += report;
+        // 3회 이상일 시 관리자에 알림주기
+    }
 }
