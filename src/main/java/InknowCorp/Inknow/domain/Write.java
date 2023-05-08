@@ -25,4 +25,15 @@ public class Write {
 
     @Enumerated(EnumType.STRING)
     private DisclosureType disclosureType;  // 일기 공개 여부 [OPEN, CLOSE]
+
+    //==연관관계 매서드==//
+    public void setMember(Member member) {
+        this.member = member;
+        member.getWrites().add(this);
+    }
+
+    public void setDiary(Diary diary) {
+        this.diary = diary;
+        diary.setWrite(this);
+    }
 }
