@@ -32,7 +32,7 @@ public class Question {
      */
 
     // 특정 질문을 받은 회원목록 가져오기
-    public List<Member> findMembers() {
+    public List<Member> getMembers() {
         List<Member> members = new ArrayList<>();
         for (MemberQuestion memberQuestion : memberQuestions) {
             members.add(memberQuestion.getMember());

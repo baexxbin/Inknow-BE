@@ -29,4 +29,16 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Diary> scraps;
 
+    /*
+        비즈니스 로직
+     */
+
+    // 회원이 지금까지 받은 질문 리스트 가져오기
+    public List<Question> getQuestions() {
+        List<Question> questions = new ArrayList<>();
+        for (MemberQuestion memberQuestion : memberQuestions) {
+            questions.add(memberQuestion.getQuestion());
+        }
+        return questions;
+    }
 }
