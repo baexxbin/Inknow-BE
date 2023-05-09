@@ -29,7 +29,7 @@ public class WriteServiceTest {
     WriteRepository writeRepository;
 
     @Test
-    public void 일기작성() throws Exception{
+    public void 일기작성() throws Exception {
         // given
         Member member = new Member();
         member.setHiddenName("수빈");
@@ -37,6 +37,7 @@ public class WriteServiceTest {
 
         String content = "테스트 일기";
         DisclosureType type = DisclosureType.CLOSE;
+
         // when
         Long writeId = writeService.write(member.getId(), content, type);
 
@@ -48,4 +49,28 @@ public class WriteServiceTest {
         assertEquals("일기의 내용은 테스트 일기", content, getWrite.getDiary().getContent());
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void 일기_공개여부_변경() throws Exception {
+        // given
+        Member member = new Member();
+        member.setHiddenName("수빈");
+        em.persist(member);
+
+        String content = "테스트 일기";
+        DisclosureType type = DisclosureType.OPEN;
+
+        // when
+        Long writeId = writeService.write(member.getId(), content, type);
+        Write getWrite = writeRepository.findOneWrite(writeId);
+
+//        DisclosureType beforeType = getWrite.getDisclosureType();
+
+        // then
+        getWrite.changeDisclosureType();
+//        DisclosureType afterType = getWrite.getDisclosureType();
+
+//        assertEquals("기존의 일기 공개 상태는 CLOSE", DisclosureType.CLOSE, beforeType);
+//        assertEquals("일기 공개 상태를 바꾼 후는 OPEN", DisclosureType.OPEN, afterType);
+        fail("이미 공개로 설정해 바꿀 수 없다는 예외가 발생해야한다.");
+    }
 }
