@@ -49,4 +49,15 @@ public class Write {
         write.setWriteDate(LocalDateTime.now());
         return write;
     }
+
+    //==비즈니스 로직==//
+    /*
+        일기 공개 여부 변경 (비공개 일기 공개로 변경)
+     */
+    public void changeDisclosureType() {
+        if (this.disclosureType == DisclosureType.OPEN) {
+            throw new IllegalStateException("이미 공개로 설정한 일기는 비공개로 변경이 불가능합니다. ");
+        }
+        this.setDisclosureType(DisclosureType.OPEN);
+    }
 }
