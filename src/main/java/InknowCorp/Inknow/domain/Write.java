@@ -1,12 +1,14 @@
 package InknowCorp.Inknow.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "writes")
 public class Write {
     @Id @GeneratedValue
@@ -35,5 +37,16 @@ public class Write {
     public void setDiary(Diary diary) {
         this.diary = diary;
         diary.setWrite(this);
+    }
+
+    //==생성 메소드==//
+    public static Write createWrite(Member member, Diary diary) {
+        Write write = new Write();
+        write.setMember(member);
+        write.setDiary(diary);
+
+        write.setDisclosureType(DisclosureType.OPEN);
+        write.setWriteDate(LocalDateTime.now());
+        return write;
     }
 }
