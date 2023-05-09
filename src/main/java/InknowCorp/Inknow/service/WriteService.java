@@ -41,5 +41,15 @@ public class WriteService {
         return write.getId();
     }
 
+    /*
+        작성한 일기 공개로 변경
+     */
+    @Transactional
+    public Long changeDiaryOpen(Long writeId) {
+        Write write = writeRepository.findOneWrite(writeId);
+        write.changeDisclosureType();
+        return write.getId();
+    }
+
     // 검색
 }

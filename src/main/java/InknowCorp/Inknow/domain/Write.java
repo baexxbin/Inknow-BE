@@ -59,7 +59,7 @@ public class Write {
      */
     public void changeDisclosureType() {
         if (this.disclosureType == DisclosureType.OPEN) {
-            throw new IllegalStateException("이미 공개로 설정한 일기는 비공개로 변경이 불가능합니다. ");
+            throw new IllegalStateException("이미 공개로 설정한 일기입니다.");
         }
         this.setDisclosureType(DisclosureType.OPEN);
     }
