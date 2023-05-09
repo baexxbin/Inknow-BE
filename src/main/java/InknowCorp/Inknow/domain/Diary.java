@@ -1,12 +1,15 @@
 package InknowCorp.Inknow.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Diary {
     @Id @GeneratedValue
     @Column(name = "diary_id")
@@ -20,9 +23,8 @@ public class Diary {
     private int report;
 
     //==생성 매소드==//
-    public static Diary createDiary(Write write, String content) {
+    public static Diary createDiary(String content) {
         Diary diary = new Diary();
-        diary.setWrite(write);
         diary.setContent(content);
         diary.setHeart(0);
         diary.setReport(0);

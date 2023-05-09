@@ -1,6 +1,8 @@
 package InknowCorp.Inknow.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "writes")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Write {
     @Id @GeneratedValue
     @Column(name = "write_id")
@@ -40,12 +43,12 @@ public class Write {
     }
 
     //==생성 메소드==//
-    public static Write createWrite(Member member, Diary diary) {
+    public static Write createWrite(Member member, Diary diary, DisclosureType type) {
         Write write = new Write();
         write.setMember(member);
         write.setDiary(diary);
 
-        write.setDisclosureType(DisclosureType.OPEN);
+        write.setDisclosureType(type);
         write.setWriteDate(LocalDateTime.now());
         return write;
     }
