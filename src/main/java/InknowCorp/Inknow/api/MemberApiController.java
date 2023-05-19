@@ -1,0 +1,40 @@
+package InknowCorp.Inknow.api;
+
+import InknowCorp.Inknow.domain.Member;
+import InknowCorp.Inknow.service.MemberService;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
+@RestController
+@RequiredArgsConstructor
+public class MemberApiController {
+
+    private final MemberService memberService;
+
+    @PostMapping("/api/members")
+    public CreateMemberResponse saveMember(@RequestBody @Valid CreateMemberRequest request) {
+        Member member = new Member();
+        member.setHiddenName(request.getName());
+
+        Long id = memberService.join(member);
+        return new CreateMemberResponse(id);
+    }
+
+    @Data
+    static class CreateMemberRequest {
+        private String name;
+    }
+
+    @Data
+    static class CreateMemberResponse {
+        private Long id;
+        public CreateMemberResponse(Long id) {
+            this.id = id;
+        }
+    }
+}
