@@ -35,4 +35,11 @@ public class MemberRepository {
                 .setParameter("hidden_name", hiddenName)
                 .getResultList();
     }
+
+    // 이메일로 회원 목록 검색
+    public List<Member> findByEmail(String email) {
+        return em.createQuery("select m from Member m where m.email =:email", Member.class)
+                .setParameter("email", email)
+                .getResultList();
+    }
 }

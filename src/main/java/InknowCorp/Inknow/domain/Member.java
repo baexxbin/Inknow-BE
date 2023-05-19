@@ -17,6 +17,8 @@ public class Member {
     @Column(name = "hidden_name")
     private String hiddenName;
 
+    private String email;
+
     @Embedded
     private Information information;
 

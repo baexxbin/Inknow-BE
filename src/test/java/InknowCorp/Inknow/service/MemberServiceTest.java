@@ -50,4 +50,20 @@ public class MemberServiceTest {
         // then
         fail("예외가 발생해야 함");
     }
+    @Test(expected = IllegalStateException.class)
+    public void 이메일_중복_회원_예외() throws Exception{
+        // given
+        Member member1 = new Member();
+        member1.setEmail("bae@bae");
+
+        Member member2 = new Member();
+        member2.setEmail("bae@bae");
+
+        // when
+        memberService.join(member1);
+        memberService.join(member2);
+
+        // then
+        fail("예외가 발생해야 함");
+    }
 }

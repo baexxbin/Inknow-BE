@@ -22,8 +22,14 @@ public class MemberService {
         return member.getId();
     }
 
+//    private void validateDuplicateMember(Member member) {
+//        List<Member> findMembers = memberRepository.findByHiddenName(member.getHiddenName());
+//        if ((long) findMembers.size() > 0) {
+//            throw new IllegalStateException("이미 존재하는 회원입니다.");
+//        }
+//    }
     private void validateDuplicateMember(Member member) {
-        List<Member> findMembers = memberRepository.findByHiddenName(member.getHiddenName());
+        List<Member> findMembers = memberRepository.findByEmail(member.getEmail());
         if ((long) findMembers.size() > 0) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }

@@ -13,7 +13,6 @@ import java.util.Date;
 public class Information {
 
     private String openName;
-    private String email;
     private Integer point;
     private Integer scrapLimit;
     private LocalDateTime counter;
